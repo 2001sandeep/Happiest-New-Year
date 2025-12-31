@@ -94,8 +94,25 @@ Thankyou for making my life better simply by being in it, Thankyou for being exa
 </p>
 
 <script>
+// 🎵 Music fade-in
+const music = document.getElementById("bgMusic");
+music.volume = 0;
+music.play().catch(() => {});
+
+let volume = 0;
+const fadeIn = setInterval(() => {
+if (volume < 0.6) {
+volume += 0.01;
+music.volume = volume;
+} else {
+clearInterval(fadeIn);
+}
+}, 200);
+
+// Dynamic name
 document.getElementById("name").innerText = "Sandhya";
 
+// Fireworks
 const fireworks = new Fireworks(document.body, {
 speed: 3,
 acceleration: 1.05,
@@ -106,6 +123,7 @@ explosion: 6
 });
 fireworks.start();
 
+// Floating hearts
 function createHeart() {
 const heart = document.createElement("div");
 heart.className = "heart";
